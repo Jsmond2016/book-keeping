@@ -1,0 +1,15 @@
+div.tag-list {
+  font-size: 16px;
+  background: #fff;
+  > li {
+    margin-left: 16px;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 20px;
+    > a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px 12px 0;
+    }
+  }
+}
