@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './numberpadsection.scss'
 import {parseOutput} from '../../../utils/compute'
 
@@ -11,20 +11,20 @@ type TProps = {
 
 const NumberPadSection: React.FC<TProps> = (props) => {
 
-  const output = props.value.toString()
+  const [output, _setOutput] = useState(props.value.toString())
 
   const setOutput = (output: string) => {
-    let value: number
+    let value: string
 
     if (output.length > 16) {
-      value = parseFloat(output.slice(0, 16))
+      value = output.slice(0, 16)
     } else if (output.length === 0) {
-      value = 0
+      value = '0'
     } else {
-      value = parseFloat(output)
+      value = output
     }
-
-    props.onChange(value)
+    _setOutput(value)
+    props.onChange(parseFloat(value))
   }
 
   const onClickPad = (e: React.MouseEvent<HTMLDivElement>) => {
